@@ -1,0 +1,40 @@
+{% extends 'prof/base.html' %}
+
+{% block content %}
+<img src="professor.prof_pic">
+<h1>{{professor}}</h1>
+<h2>{{professor.prof_position}}</h2>
+<p>Department of {{professor.prof_department}}<br>
+Indian Institute of Technology, Delhi<br>
+Hauz Khas, New Delhi 110 016, India
+</p>
+<p>Phone: {{professor.prof_phone}}</p>
+<p>Email: {{professor.prof_mail}}</p>
+<p>Research Area:
+{{professor.prof_ra}}</p>
+
+<p>Your Review: </p>
+<ul>
+{% for review in all_reviews %}
+    {% if review.reviewer in user.username %}
+        <li>Rating out of 10: {{review.rating}}</li>
+        <p>Comment: {{review.comment}}</p>
+        <p>Review by: {{review.reviewer}}</p>
+        <a href="/professor/{{professor.id}}/edit_review/{{review.id}}/">Edit</a>   <a href="/professor/{{professor.id}}/delete_review/{{review.id}}/">Delete</a>
+    {% endif %}
+{% endfor %}
+</ul>
+
+<a href="/professor/{{professor.id}}/add_review/">Review Professor</a>
+<h4>Reviews: </h4>
+<ul>
+{% for review in all_reviews %}
+    {% if review.reviewer not in user.username %}
+        <li>Rating out of 10: {{review.rating}}</li>
+            <p>Comment: {{review.comment}}</p>
+            <p>Review by: {{review.reviewer}}</p>
+            <
+    {% endif %}
+{% endfor %}
+</ul>
+{% endblock %}

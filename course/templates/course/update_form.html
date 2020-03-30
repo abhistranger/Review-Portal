@@ -1,0 +1,17 @@
+{% extends 'prof/base.html' %}
+{% block content %}
+<p>Update Review</p>
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {% include 'user/form_template.html' %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+    </div>
+</form>
+{%endblock%}

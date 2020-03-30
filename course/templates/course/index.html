@@ -1,0 +1,22 @@
+{% extends 'prof/base.html' %}
+{% block content %}
+<form role="search" method="get" action="/course/search">
+    <input type="text" value="" name="search">
+    <button type="submit" >Search</button>
+</form>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<h2>List of Courses</h2>
+<ul>
+    {% for course in all_courses %}
+    <li><a href="/course/{{course.id}}/">{{course}}</a><p>{{course.course_name}}</p></li>
+    {% endfor %}
+</ul>
+{% endblock %}

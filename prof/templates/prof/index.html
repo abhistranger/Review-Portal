@@ -1,0 +1,34 @@
+{% extends 'prof/base.html' %}
+{% block content %}
+
+<form role="search" method="get" action="/professor/search">
+    <input type="text" value="" name="search">
+    <button type="submit" >Search</button>
+</form>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h2>List of Professors</h2>
+
+<ul>
+    {% for prof in all_profs %}
+    <li><a href="/professor/{{prof.id}}/">{{prof.prof_name}}</a><p>{{prof.prof_department}}</p></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

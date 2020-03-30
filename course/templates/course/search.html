@@ -1,0 +1,16 @@
+{% extends 'prof/base.html' %}
+{% block content %}
+<form role="search" method="get" action="/course/search">
+    <input type="text" value="" name="search">
+    <button type="submit" >Search</button>
+</form>
+
+<p>Search Results: </p>
+<ul>
+    {% for result in all_search_results %}
+        <li><a href="/course/{{result.id}}/">{{result}}</a><p>{{result.course_name}}</p></li>
+    {% empty %}
+        <p>No Result, Search Again</p>
+    {% endfor %}
+</ul>
+{% endblock %}

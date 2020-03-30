@@ -1,0 +1,14 @@
+{% extends 'prof/base.html' %}
+{% block content %}
+
+{% block title %}Username: {{ user.username }}{% endblock %}
+
+{% block body_block %}
+        {% if user.is_authenticated %}
+        <h2>{{ user.username }} welcome to your profile page</h2>
+        <h3>Name: {{ user.first_name }} {{ user.last_name }}</h3>
+
+        {% endif %}
+
+{% endblock %}
+{%endblock%}
